@@ -1,0 +1,59 @@
+.container-mockup-2{
+    background-color: #191970;
+    width: 600px;
+    height: 580px;
+    margin-bottom: 100px;
+
+    
+}
+.main-container-mockup-2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#textlog{
+    margin-bottom: 30px;
+    font-style: italic;
+    font-weight: 900;
+    text-align: center;
+    color:white;
+}
+.form-control{
+    margin-inline-start: 20px;
+    width: 92%;
+    font-size: 20px;
+    background: rgba(0, 0, 0, 0);
+    color: white;
+    
+
+}
+button.btn.btn-primary.btn-lg.btn-block {
+    margin-top: 20px;
+    width: 550px;
+    margin-right: 100px;
+    text-align: center;
+    margin-inline-start: 20px;
+    margin-inline-end: 10px;
+    background-color: black;
+    
+    
+    
+}
+
+#texto1{
+    margin-inline-start: 20px;
+    margin-top: 3px;
+    color: aliceblue;
+}
+
+#texto2{
+    margin-top: 10px;
+    color: aliceblue;
+    margin-inline-start: 20px;
+    
+}
+#texto3{
+    margin-inline-start: 20px;
+    color: aliceblue;
+}
