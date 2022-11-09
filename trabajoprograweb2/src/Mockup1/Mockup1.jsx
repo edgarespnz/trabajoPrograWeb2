@@ -1,9 +1,10 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "../stylesheets/Mockup1-stylesheet.css"
 import { useNavigate } from "react-router-dom"
+import { Button, Form, Container, Row, Col } from "react-bootstrap"
 
 
-function Mockup1(){
+function Mockup1() {
 
     const [firstname, setFirstName] = useState("")
     const [lastname, setLastName] = useState("")
@@ -20,56 +21,42 @@ function Mockup1(){
     }
 
     return (
-        <div className="main-container-mockup-1">
-            <div className="container-mockup-1">
-                <div className="container" id = "contenedorLogin"/>
-                    <h2 id="textregis">
-                        REGISTER
-                    </h2>
-                    
- 
-                    <div className="form-group">
-                        <label for="Name"></label>
-                            <input type="name" className="form-control" id="firstName"  placeholder="First Name"
-                            value={firstname}
+        <Container>
+            <Form>
+                <h1 className="title">CREATE ACCOUNT</h1>
+                <Form.Group className="mb-3" controlId="formFirstName">
+                    <Form.Control type="firstName" placeholder="First Name" value={firstname}
                             onChange={(evt)=>setFirstName(evt.target.value)}/>
-                            
-            
-                    </div>
-                    <div className="form-group">
-                        <label for="NameSec"></label>
-                            <input type="lastname" className="form-control" id="lastName"  placeholder="Last Name"
-                            value={lastname}
-                            onChange={(evt)=>setLastName(evt.target.value)}/>
-                            
-            
-                    </div>
-                    <div className="form-group">
-                        <label for="correo"></label>
-                            <input type="email" className="form-control" id="email"  placeholder="Email"
-                            value={email}
-                            onChange={(evt)=>setEmail(evt.target.value)}/>
-                            
-            
-                    </div>
-                    <div className="form-group">
-                        <label for="pass"></label>
-                            <input type="password" className="form-control" id="passw"  placeholder="Password"
-                            value={password}
-                            onChange={(evt)=>setPassword(evt.target.value)}/>
-            
-          
-                    </div>
-                        <button type="button" className="btn btn-primary btn-lg btn-block"
-                        onClick={createOnClick}>
-                            CREATE
-                        </button>
+                </Form.Group>
 
+                <Form.Group className="mb-3" controlId="formLastName">
+                    <Form.Control type="lastName" placeholder="Last Name" 
+                    value={lastname}
+                    onChange={(evt)=>setLastName(evt.target.value)}/>
+                </Form.Group>
 
+                <Form.Group className="mb-3" controlId="formEmail">
 
-            </div>
-        </div>
-    
+                    <Form.Control type="email" placeholder="Email" 
+                     value={email}
+                     onChange={(evt)=>setEmail(evt.target.value)}/>
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formPassword">
+
+                    <Form.Control type="password" placeholder="Password" 
+                     value={password}
+                     onChange={(evt)=>setPassword(evt.target.value)}/>
+                </Form.Group>
+
+                <div className="d-grid gap-2">
+                <Button variant="primary" type="submit" onClick={createOnClick} >
+                    Submit
+                </Button>
+                </div>
+            </Form>
+        </Container>
+
     );
 }
 export default Mockup1;
