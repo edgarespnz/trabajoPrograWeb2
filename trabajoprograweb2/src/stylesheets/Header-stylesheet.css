@@ -1,0 +1,36 @@
+.container-header{
+    max-width: 100%;
+}
+
+.header-logo{
+    max-width: 100px;
+}
+
+.column-left-header{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.column-center-header{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.column-right-header{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.icon-right{
+    width: 35px;
+    height: 35px;
+}
+
+.header-buttons{
+    border: none;
+    color:black;/*cambiar color a blanco cuando el fondo cambie*/
+    background-color: transparent;
+    margin-left: 5px;
+    margin-right: 5px;
+}

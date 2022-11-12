@@ -21,7 +21,7 @@ function Mockup1() {
     }
 
     return (
-        <Container>
+        <Container className="container-m1">
             <Form>
                 <h1 className="title">CREATE ACCOUNT</h1>
                 <Form.Group className="mb-3" controlId="formFirstName">

@@ -6,11 +6,14 @@ import { BrowserRouter,Route,Routes } from 'react-router-dom';
 
 import Mockup1 from './Mockup1/Mockup1';
 import Mockup2 from './Mockup2/Mockup2';
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
   <React.StrictMode>
+    <Header/>
     <BrowserRouter>
     <Routes>
       <Route>
@@ -18,8 +21,8 @@ root.render(
       <Route path='/mockup-2' element={<Mockup2/>}/>
       </Route>
     </Routes>
-
-    </BrowserRouter>
+    
+  </BrowserRouter>
   </React.StrictMode>
 );
 
