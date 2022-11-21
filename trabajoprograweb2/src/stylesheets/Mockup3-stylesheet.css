@@ -1,7 +1,21 @@
 .m3-buttons{
+    margin-top: 5%;
+    border: none;
     margin-right: 1%;
+    background-color: rgb(189, 72, 189);
 }
 
 .footer-col-left{
+    color:white;
+}
+
+.m3-col-left>h1{
+    color:white;
+    margin-top: 5%;
+}
+
+.m3-col-left>h2{
+    margin-top: 5%;
+    font-weight: 400;
     color:white;
 }

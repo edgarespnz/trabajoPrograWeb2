@@ -1,15 +1,17 @@
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import Footer from "../Footer/Footer";
 import logo from "../Header/Images/LOGO.png"
 import "../stylesheets/Mockup3-stylesheet.css"
 
 function Mockup3() {
     return (
-        <Container className="container-mockup3">
+        <>
+         <Container className="container-mockup3">
             <Row className="m3-row-1">
                 <Col sm={8} className="m3-col-left">
                     <img className="main-logo" src={logo} alt="logo" width={200} />
-                    <h1>Build your PC!</h1>
+                    <h1 >Build your PC!</h1>
                     <h2>Just for what you need</h2>
                     <Button className="m3-buttons">Build for begginers</Button>
                     <Button className="m3-buttons">Advanced Building</Button>
@@ -18,9 +20,13 @@ function Mockup3() {
 
                 </Col>
             </Row>
-
-
+            
         </Container>
+        <Footer/>
+        </>
+
+       
+        
     );
 }
 

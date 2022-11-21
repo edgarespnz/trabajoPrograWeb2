@@ -1,0 +1,42 @@
+.searchInput{
+    color:white;
+    max-width: fit-content;
+    background-color: rgba(0, 0, 0, 0.336);
+    
+    ;
+}
+
+.dataResult{
+    border-radius: 1%;
+    margin-top: 1%;
+    margin-left: 3%;
+    width: fit-content;
+    background-color: white;
+}
+
+.results-rows{
+    cursor: pointer;
+    padding: 2%;
+    display:flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.item-name{
+    margin-left: 3%;
+    text-align: center;
+}
+
+.dataResult-title{
+    padding: 2%;
+    text-transform: uppercase;
+    font-size: medium;
+    font-weight: light;
+    color:grey;
+}
+
+.search-close-icon{
+    border-left:none ;
+    background-color: rgba(0, 0, 0, 0.336);
+}
+

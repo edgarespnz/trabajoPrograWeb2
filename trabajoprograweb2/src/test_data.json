@@ -1,0 +1,23 @@
+[
+    {
+        "id": "1",
+        "image": "https://www.nvidia.com/content/dam/en-zz/Solutions/about-nvidia/logo-and-brand/02-nvidia-logo-color-blk-500x200-4c25-p@2x.png",
+        "name" : "NVIDIA GEFORCE GTX 1650 4GB",
+        "seller": "Redux",
+        "price" : "229",
+        "manufacturer": "NVIDIA",
+        "gpu": "GeForce GTX 1650",
+        "core_clock": "1530 Mhz",
+        "boost_clock": "OC Mode: 1800MHZ Gaming Mode (default): 1770 MHz",
+        "cuda_cores": "1280"
+
+    },
+    {
+        "id": "2",
+        "image": "https://w7.pngwing.com/pngs/783/818/png-transparent-computer-cases-housings-power-supply-unit-atx-corsair-components-rgb-color-model-case-pc-electronic-device-motherboard-mid-tower.png",
+        "name" : "CASE COOLERCASE",
+        "seller": "Redux",
+        "price" : "129"
+    }
+
+]

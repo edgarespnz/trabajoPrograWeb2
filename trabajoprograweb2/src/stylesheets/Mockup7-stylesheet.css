@@ -1,0 +1,47 @@
+.m7-col{
+    margin-top: 15%;
+    height: 500px;
+    max-height: fit-content;
+    width: 30%;
+
+}
+
+
+
+.m7-col.middle{
+    width: 10%;
+}
+.m7-col.right{
+    background-color: aliceblue;
+}
+
+.m7-col.left{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: aliceblue;
+}
+
+.m7-col.left>img{
+    height: 400px;
+}
+
+#details{
+    border: solid;
+}
+
+#details>h3{
+    text-align:center;
+    font-size: medium;
+}
+
+.m7-list-item-shippingText{
+    font-size: small;
+    margin-bottom: 5%;
+}
+
+.m7-list-item-price{
+    font-size: medium;
+}
+

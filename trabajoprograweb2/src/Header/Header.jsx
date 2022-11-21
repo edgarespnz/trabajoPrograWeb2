@@ -5,14 +5,22 @@ import logo from "./Images/LOGO.png"
 import { BsSearch } from "react-icons/bs"
 import { AiOutlineUser, AiOutlineShoppingCart } from "react-icons/ai"
 import { Navigate } from "react-router";
+import {useState} from "react";
+import SearchBar from "./SearchBar";
 
 function Header() {
+    
+    const [searchButtonState, setSearchButtonState] = useState(false)
+
+    const onClickSearchButton = () =>{
+        setSearchButtonState(true);
+    }
 
     return (
         <Container className="container-header">
-            <Row>
+            <Row className="header-row">
                 <Col className="column-left-header">
-                    <img className="header-logo" src={logo} alt="logo-image" />
+                    <img className="header-logo" src={logo} alt="logo-image"/>
                 </Col>
 
                 <Col className="column-center-header">
@@ -32,9 +40,9 @@ function Header() {
 
 
                 <Col className="column-right-header">
-                    <BsSearch className="icon-right" />
-                    <AiOutlineUser className="icon-right" />
-                    <AiOutlineShoppingCart className="icon-right" />
+                    {searchButtonState === false ? <BsSearch className="icon-right" color="white" onClick={onClickSearchButton}/> : <SearchBar />}
+                    <AiOutlineUser className="icon-right" color="white"/>
+                    <AiOutlineShoppingCart className="icon-right" color="white"/>
                 </Col>
             </Row>
 

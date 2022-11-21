@@ -1,4 +1,5 @@
-.container-footer {
+.container-footer{
+    padding: 2%;
     background-image: url(../Footer/Images/Footer.PNG);
     background-size: cover;
     position: fixed;

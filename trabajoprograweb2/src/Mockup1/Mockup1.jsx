@@ -50,8 +50,8 @@ function Mockup1() {
                 </Form.Group>
 
                 <div className="d-grid gap-2">
-                <Button variant="primary" type="submit" onClick={createOnClick} >
-                    Submit
+                <Button variant="light" type="submit"  onClick={createOnClick} >
+                    Create
                 </Button>
                 </div>
             </Form>

@@ -11,7 +11,7 @@ function Mockup2 (){
     const navigate=useNavigate();
 
     const signUpOnClick=()=>{
-        navigate("/mockup-1")
+        navigate("/")
     }
     
     const loginOnclick=()=>{
