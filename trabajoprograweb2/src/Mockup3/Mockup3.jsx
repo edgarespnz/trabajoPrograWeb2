@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import Footer from "../Footer/Footer";
 import logo from "../Header/Images/LOGO.png"
 import "../stylesheets/Mockup3-stylesheet.css"
+import {useLocation } from "react-router-dom";
+import { RUTA_BACKEND } from "../conf";
 
 function Mockup3() {
+
+    const location = useLocation();
+    const correo = location.state.email
+    const [user, setUser] = useState([]);
+
+    const httpUsers = async () => {
+        const resp = await fetch(`${RUTA_BACKEND}/usuarios?correo=${correo}`)
+        const data = await resp.json()
+        setUser(data)
+        console.log(user)
+    }
+
+    useEffect(()=>{
+        httpUsers();
+    },[]);
+
     return (
         <>
          <Container className="container-mockup3">

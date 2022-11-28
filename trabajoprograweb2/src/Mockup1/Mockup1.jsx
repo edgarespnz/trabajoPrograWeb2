@@ -3,45 +3,65 @@ import "../stylesheets/Mockup1-stylesheet.css"
 import { useNavigate } from "react-router-dom"
 import { Button, Form, Container, Row, Col } from "react-bootstrap"
 import { RUTA_BACKEND } from "../conf";
+import { Alert } from "react-bootstrap";
 
 
 function Mockup1() {
-//para controlar los formularios
-    const [firstname, setFirstName] = useState("")
-    const [lastname, setLastName] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+
+    const [alertShow, setAlertShow] = useState(false);
+    const [usuario, setUsuario] = useState([]);
+
+    //para controlar los formularios
+    const [firstname, setFirstName] = useState('')
+    const [lastname, setLastName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
     const navigate = useNavigate();
 
-    //para comprobar usuarios
-    const [user, setUser] = useState([])
-
-    const httpGetUsersList = async (correo = null) => {
-        const resp = await fetch(RUTA_BACKEND+``)
+    const httpPostUser = async () => {
+        const resp = await fetch(`${RUTA_BACKEND}/create_user`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                firstName: firstname,
+                lastName: lastname,
+                password: password,
+                email: email
+            })
+        });
         const data = await resp.json()
-        setUser(data)
-        console.log(user)
+        console.log(data)
     }
+
 
     //Acceder a la pagina login
     const createOnClick = () => {
-        user.forEach(element => {
-            if(element.Correo !== email){
-                navigate("/mockup-2")
+            try {
+                    httpPostUser();
+                    setAlertShow(false)
+                    
+            } catch (error) {
+                if (error.error.error === '') {
+                    navigate("/login")
+                    console.log("USUARIO CREADO")
+                }
+                else {
+                    setAlertShow(true)
+                }
             }
-            else{
-                console.log("error")
-            }
-        });
-    };
 
-    useEffect(() => {
-        httpGetUsersList();
-    }, [])
+    };
 
     return (
         <Container className="container-m1">
             <Form>
+                <Alert show={alertShow} variant="danger" onClose={() => setAlertShow(false)} dismissible>
+                    <Alert.Heading>Oops! El usuario ya existe</Alert.Heading>
+                </Alert>
+
                 <h1 className="title">CREATE ACCOUNT</h1>
                 <Form.Group className="mb-3" controlId="formFirstName">
                     <Form.Control type="firstName" placeholder="First Name" value={firstname}
@@ -69,7 +89,7 @@ function Mockup1() {
                 </Form.Group>
 
                 <div className="d-grid gap-2">
-                    <Button variant="light" type="submit" onClick={createOnClick} >
+                    <Button variant="light" type="button" onClick={createOnClick} >
                         Create
                     </Button>
                 </div>

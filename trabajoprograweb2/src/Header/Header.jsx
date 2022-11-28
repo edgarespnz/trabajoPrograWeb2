@@ -1,20 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Col, Container, ListGroup, Row, Button } from "react-bootstrap";
 import "../stylesheets/Header-stylesheet.css"
 import logo from "./Images/LOGO.png"
 import { BsSearch } from "react-icons/bs"
 import { AiOutlineUser, AiOutlineShoppingCart } from "react-icons/ai"
-import { Navigate } from "react-router";
+import { Navigate, useNavigate } from "react-router-dom";
 import {useState} from "react";
 import SearchBar from "./SearchBar";
 
 function Header() {
     
+    const navigate = useNavigate();
     const [searchButtonState, setSearchButtonState] = useState(false)
 
     const onClickSearchButton = () =>{
         setSearchButtonState(true);
     }
+
+    const onClickHomeButton=()=>{
+        navigate("/mockup-3")
+    }
+
+    const onClickCartButton=()=>{
+        navigate("/mockup-8")
+    }
+
 
     return (
         <Container className="container-header">
@@ -25,7 +35,7 @@ function Header() {
 
                 <Col className="column-center-header">
                     <ListGroup horizontal>
-                            <Button className="header-buttons">Home</Button>
+                            <Button className="header-buttons" onClick={onClickHomeButton}>Home</Button>
                         
                             <Button className="header-buttons">About</Button>
                 
@@ -42,7 +52,7 @@ function Header() {
                 <Col className="column-right-header">
                     {searchButtonState === false ? <BsSearch className="icon-right" color="white" onClick={onClickSearchButton}/> : <SearchBar />}
                     <AiOutlineUser className="icon-right" color="white"/>
-                    <AiOutlineShoppingCart className="icon-right" color="white"/>
+                    <AiOutlineShoppingCart className="icon-right" color="white" onClick={onClickCartButton}/>
                 </Col>
             </Row>
 

@@ -3,54 +3,56 @@ import { Alert } from "react-bootstrap";
 import { isElementOfType } from "react-dom/test-utils";
 import { useNavigate } from "react-router-dom";
 import { RUTA_BACKEND } from "../conf";
+import Mockup3 from "../Mockup3/Mockup3";
 import "../stylesheets/Mockup2-stylesheet.css"
+import { BrowserRouter , Routes, Route} from "react-router-dom";
 
 
 function Mockup2() {
+    const [usuario, setUsuario] = useState([])
+
+    const navigate = useNavigate();
+    const [loginClick, setLoginClick] = useState(false)
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [usersList, setUserLists] = useState([])
     const [alertShow, setAlertShow] = useState(false);
 
-    const navigate = useNavigate();
 
-    const signUpOnClick = () => {
-        navigate("/")
-    }
-
-    const httpUsers = async () => {
-        const resp = await fetch(`${RUTA_BACKEND}/usuarios`)
+    const httpUsers = async (correo) => {
+        const resp = await fetch(`${RUTA_BACKEND}/usuarios?correo=${correo}`)
         const data = await resp.json()
-        console.log(usersList)
-        setUserLists(data)
+        setUsuario(data)
     }
 
-    useEffect(() => {
-        httpUsers();
-    }, [])
+    const loginOnClick = () => {
+        let correo = email
+        httpUsers(correo)
 
+        try {
+            if (usuario !== undefined && (usuario[0].Correo == correo && password == usuario[0].Contraseña)) {
+                navigate("/mockup-3", {
+                    state : {email : email}
+                })
+            }
+            else {
+                setAlertShow(true)
+            }    
+        } catch (error) {
+            setAlertShow(true)
+        }
+    }
 
-    const loginOnclick = () => {
-        usersList.forEach(element => {
-            if(element.Correo == email && element.Contraseña == password){
-                navigate("/mockup-3")
-            }
-            else{
-                return(setAlertShow(true))
-            }
-        });
-}
+    <div className="choco" style={"background-color=black"}></div>
 
     return (
         <div className="main-container-mockup-2">
             <div className="container-mockup-2">
                 <div className="container" id="contenedorLogin" />
-                <Alert show = {alertShow} variant="danger" onClose={() => setAlertShow(false)} dismissible>
+                <Alert show={alertShow} variant="danger" onClose={() => setAlertShow(false)} dismissible>
                     <Alert.Heading>Oops! Error en el usuario o la contraseña</Alert.Heading>
-                    
-                </Alert>
 
+                </Alert>
                 <h2 id="textlog">
                     LOG IN
                 </h2>
@@ -73,7 +75,7 @@ function Mockup2() {
 
                 </div>
                 <button type="button" className="btn btn-primary btn-lg btn-block"
-                    onClick={loginOnclick}>LOGIN
+                    onClick={loginOnClick}    >LOGIN
                 </button>
                 <p id="texto2">forgot your password?</p>
                 <br />
@@ -81,7 +83,7 @@ function Mockup2() {
                 <br />
                 <p id="texto3">Dont have account?</p>
                 <button type="button" className="btn btn-primary btn-lg btn-block" id="button2"
-                    onClick={signUpOnClick}>
+                onClick={()=>{navigate("/")}}>
                     SIGN UP
                 </button>
 
