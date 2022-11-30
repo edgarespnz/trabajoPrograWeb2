@@ -9,8 +9,6 @@ import { Alert } from "react-bootstrap";
 function Mockup1() {
 
     const [alertShow, setAlertShow] = useState(false);
-    const [usuario, setUsuario] = useState([]);
-
     //para controlar los formularios
     const [firstname, setFirstName] = useState('')
     const [lastname, setLastName] = useState('')
@@ -33,33 +31,22 @@ function Mockup1() {
             })
         });
         const data = await resp.json()
-        console.log(data)
+        if (data.error === '' && firstname !== "" && lastname !== "" && email !== "" && password !== "") {
+            navigate("/login")
+        }
+        else {
+            setAlertShow(true)
+        }
+
     }
 
-
     //Acceder a la pagina login
-    const createOnClick = () => {
-            try {
-                    httpPostUser();
-                    setAlertShow(false)
-                    
-            } catch (error) {
-                if (error.error.error === '') {
-                    navigate("/login")
-                    console.log("USUARIO CREADO")
-                }
-                else {
-                    setAlertShow(true)
-                }
-            }
-
-    };
 
     return (
         <Container className="container-m1">
             <Form>
                 <Alert show={alertShow} variant="danger" onClose={() => setAlertShow(false)} dismissible>
-                    <Alert.Heading>Oops! El usuario ya existe</Alert.Heading>
+                    <Alert.Heading>Oops! Error al crear usuario</Alert.Heading>
                 </Alert>
 
                 <h1 className="title">CREATE ACCOUNT</h1>
@@ -89,7 +76,7 @@ function Mockup1() {
                 </Form.Group>
 
                 <div className="d-grid gap-2">
-                    <Button variant="light" type="button" onClick={createOnClick} >
+                    <Button variant="light" type="button" onClick={httpPostUser} >
                         Create
                     </Button>
                 </div>

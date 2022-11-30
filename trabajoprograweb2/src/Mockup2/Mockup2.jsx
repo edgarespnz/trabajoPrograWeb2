@@ -9,41 +9,35 @@ import { BrowserRouter , Routes, Route} from "react-router-dom";
 
 
 function Mockup2() {
-    const [usuario, setUsuario] = useState([])
-
     const navigate = useNavigate();
-    const [loginClick, setLoginClick] = useState(false)
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [alertShow, setAlertShow] = useState(false);
 
 
-    const httpUsers = async (correo) => {
-        const resp = await fetch(`${RUTA_BACKEND}/usuarios?correo=${correo}`)
+    const httpLogin = async (email, password) => {
+        const resp = await fetch(`${RUTA_BACKEND}/get_user`,{
+            headers : {
+                "Content-Type" : "application/json"
+            },
+            method : "POST" ,
+            body : JSON.stringify({
+                email : email ,
+                password : password
+
+            })
+        })
         const data = await resp.json()
-        setUsuario(data)
-    }
-
-    const loginOnClick = () => {
-        let correo = email
-        httpUsers(correo)
-
-        try {
-            if (usuario !== undefined && (usuario[0].Correo == correo && password == usuario[0].Contraseña)) {
-                navigate("/mockup-3", {
-                    state : {email : email}
-                })
-            }
-            else {
-                setAlertShow(true)
-            }    
-        } catch (error) {
+        //verificacion
+        if(data.error === ""){
+            navigate("/mockup-3")
+            localStorage.setItem("TOKEN" , data.TOKEN)
+        }
+        else{
             setAlertShow(true)
         }
     }
-
-    <div className="choco" style={"background-color=black"}></div>
 
     return (
         <div className="main-container-mockup-2">
@@ -75,7 +69,7 @@ function Mockup2() {
 
                 </div>
                 <button type="button" className="btn btn-primary btn-lg btn-block"
-                    onClick={loginOnClick}    >LOGIN
+                    onClick={()=>{httpLogin(email, password)}}    >LOGIN
                 </button>
                 <p id="texto2">forgot your password?</p>
                 <br />

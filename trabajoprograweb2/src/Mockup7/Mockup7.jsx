@@ -1,90 +1,121 @@
 import React from "react";
-import { Col, Row, Container, Button } from "react-bootstrap";
+import { Col, Row, Container, Button, Alert } from "react-bootstrap";
 import "../stylesheets/Mockup7-stylesheet.css"
 import { Figure } from "react-bootstrap";
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { RUTA_BACKEND } from "../conf";
-import { useLocation } from "react-router-dom";
-
 
 function Mockup7() {
-    
-    const location = useLocation();
-    const [item, setItem] = useState([]);
 
-    const httpObtenerProducto = async () => {
-        const resp = await fetch(`${RUTA_BACKEND}/productos?id=${location.state.id}`)
-        const data = await resp.json()
+    const idProductoBuscado = localStorage.getItem("idProductoBuscado")
+    const [item, setItem] = useState([]);
+    const [addState , setAddState] = useState(false)
+    const [cart , setCart] = useState([]);
+
+    const [itemUrl , setItemUrl] = useState("")
+    const [itemNombre , setItemNombre] = useState("")
+    const [itemPrecio , setItemPrecio] = useState("")
+    const [itemManufacturer, setItemManufacturer] = useState("")
+    const [itemGpu, setItemGpu] = useState("")
+    const [itemCoreClock, setItemCoreClock] = useState("")
+    const [itemBoostClock, setItemBoostClock] = useState("")
+    const [itemCudaCores, setItemCudaCores] = useState("")
+
+    const httpObtenerProducto = async (idProductoBuscado) => {
+        const resp = await fetch(`${RUTA_BACKEND}/obtener_producto`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                idProductoBuscado: idProductoBuscado
+            })
+        })
+        const data = await resp.json();
         setItem(data)
+        setItemUrl(item.producto.Url)
+        setItemNombre(item.producto.Nombre)
+        setItemPrecio(item.producto.Precio)
     }
 
-    useEffect(() => { 
-        console.log(item)
-        httpObtenerProducto()
-    },[location])
+    useEffect(() => {
+        httpObtenerProducto(idProductoBuscado);
+    }, [item])
+
+    useEffect(()=>{
+        localStorage.setItem("cart" , JSON.stringify(cart))
+    },[cart])
+
+    const onClickAddToCart=()=>{
+        setCart(item.producto)
+        setAddState(true)
+    }
+
 
     return (
         <Container>
-           {item.map((data)=>{
-            return  <Row className="m7-row1">
+            <Row className="m7-row1">
                 <Col xs lg="2" className="m7-col left">
                     <Figure.Image className="item-image-m7"
                         width={250}
                         height={400}
                         alt="50x50"
-                        src={item[0].Url} />
-                    <Button>Add to the cart</Button>
+                        src={itemUrl} />
+                    <Button onClick={onClickAddToCart}>Add to the cart</Button>
+                    <Alert show = {addState} variant="success" onClose={()=>{setAddState(false)}} dismissible>
+                        <Alert.Heading>Item añadido</Alert.Heading>
+                    </Alert>
                 </Col>
                 <Col sm="auto" className="m7-col middle">
-                    
+
                 </Col>
                 <Col xs lg="2" className="m7-col right">
-                    <h1 className="m7-list-item-title">{item[0].Nombre}</h1>
-                    <h2 className="m7-list-item-price">${item[0].Precio}</h2>
+                    <h1 className="m7-list-item-title">{itemNombre}</h1>
+                    <h2 className="m7-list-item-price">${itemPrecio}</h2>
                     <h3 className="m7-list-item-shippingText"><a href="">Shipping</a> calculated at checkout</h3>
                     <Row className="m7-row1">
-                        <Col className="m7-col1" id = "details">
+                        <Col className="m7-col1" id="details">
                             <h3>Manufacturer</h3>
                         </Col>
-                        <Col className="m7-col2" id = "details">
-                        {item[0].manufacturer}
+                        <Col className="m7-col2" id="details">
+                            {itemManufacturer}
                         </Col>
                     </Row>
                     <Row className="m7-row2">
-                        <Col className="m7-col2" id = "details">
+                        <Col className="m7-col2" id="details">
                             <h3>GPU</h3>
                         </Col>
-                        <Col className="m7-col2" id = "details">
-                        {item[0].gpu}
+                        <Col className="m7-col2" id="details">
+                            {itemGpu}
                         </Col>
                     </Row>
                     <Row className="m7-row3">
-                        <Col className="m7-col3" id = "details">
+                        <Col className="m7-col3" id="details">
                             <h3>CORE CLOCK</h3>
                         </Col>
-                        <Col className="m7-col3" id = "details">
-                        {item[0].core_clock}
+                        <Col className="m7-col3" id="details">
+                            {itemCoreClock}
                         </Col>
                     </Row>
                     <Row className="m7-row3">
-                        <Col className="m7-col4" id = "details">
+                        <Col className="m7-col4" id="details">
                             <h3>BOOST CLOCK</h3>
                         </Col>
-                        <Col className="m7-col4" id = "details">
-                        {item[0].boost_clock}
+                        <Col className="m7-col4" id="details">
+                            {itemBoostClock}
                         </Col>
                     </Row>
                     <Row className="m7-row3">
-                        <Col className="m7-col5" id = "details">
+                        <Col className="m7-col5" id="details">
                             <h3>CUDA CORES</h3>
                         </Col>
-                        <Col className="m7-col5" id = "details">
-                        {item[0].cuda_cores}
+                        <Col className="m7-col5" id="details">
+                            {itemCudaCores}
                         </Col>
                     </Row>
                 </Col>
             </Row>
-           })}
         </Container>
     );
 }
