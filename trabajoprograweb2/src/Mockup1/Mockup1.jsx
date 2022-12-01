@@ -40,6 +40,9 @@ function Mockup1() {
 
     }
 
+    // items = [{productoid : 12345}, {productoid : 1234546}]
+    /* items.map((data)=>{
+    })*/
     //Acceder a la pagina login
 
     return (
