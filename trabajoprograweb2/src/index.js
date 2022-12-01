@@ -31,6 +31,7 @@ root.render(
       <Route path='/' element={<Mockup1/>} />
       <Route path='/login' element={<Mockup2/>}/>
       <Route path='/mockup-3' element={<Mockup3/>}/>
+      <Route path='/mockup-7' element={<Mockup7/>}/>
       <Route path='/mockup-8' element={<Mockup8/>}/>
       <Route path='/mockup-10' element={<Mockup10/>}/>
       <Route path='/mockup-11' element={<Mockup11/>}/>

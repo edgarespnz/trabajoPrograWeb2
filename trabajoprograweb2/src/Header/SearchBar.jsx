@@ -14,7 +14,6 @@ function SearchBar() {
     const [data, setData] = useState([]);
     const [filter, setFilter] = useState([]);
     const [value, setValue] = useState("")
-    const [selectedId, setSelectedId] = useState("")
 
     const httpObtenerProductos = async () => {
         const resp = await fetch(`${RUTA_BACKEND}/productos`)
@@ -36,8 +35,10 @@ function SearchBar() {
     }
 
     const renderItem=(producto_id)=>{
-       navigate("/mockup-7",{state: {id: producto_id}})
+        localStorage.setItem("idProductoBuscado", producto_id)
+       navigate("/mockup-7")
     }
+
 
 
     return (
