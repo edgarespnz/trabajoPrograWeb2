@@ -7,21 +7,23 @@ import "../stylesheets/Mockup11-stylesheet.css"
 
 function Mockup11() {
 
+    let tipoPC = localStorage.getItem("tipo_pc")
     const [pcArmada , setPcArmada] = useState([])
     const [item , setItem] = useState([])
     const [productos, setProductos] = useState([])
 
 
-    const httpObtenerProductos = async (tipo) => {
-        const resp = await fetch(`${RUTA_BACKEND}/obtener_productos_pc_armado?=${tipo}`)
+    const httpObtenerProductos = async () => {
+        const resp = await fetch(`${RUTA_BACKEND}/obtener_productos_pc_armado?tipo=${tipoPC}`)
         const data = await resp.json()
         setProductos(data)
-        console.log(data)
+        console.log(tipoPC)
+        console.log(productos)
     }
 
     
     useEffect(()=>{
-        httpObtenerProductos("gaming")
+        httpObtenerProductos()
     },[])
 
 
@@ -34,7 +36,7 @@ function Mockup11() {
 
                     </Col>
                     <Col sm={4}>
-                        <Button className="groupbuttonsm11"> {"<Back"} </Button>
+                        <Button className="groupbuttonsm11" > {"<Back"}</Button>
                         <Button className="groupbuttonsm11"> <BsCart /> Checkout </Button>
                     </Col>
                 </Row>
