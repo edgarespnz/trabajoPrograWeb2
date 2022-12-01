@@ -5,7 +5,7 @@
 -- Dumped from database version 15.0
 -- Dumped by pg_dump version 15.0
 
--- Started on 2022-11-30 13:16:37
+-- Started on 2022-11-30 20:49:54
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -288,7 +288,7 @@ ALTER TABLE ONLY public.resena
     ADD CONSTRAINT "FK_Usuario_ID" FOREIGN KEY ("Usuario_ID") REFERENCES public.usuario("Usuario_ID");
 
 
--- Completed on 2022-11-30 13:16:37
+-- Completed on 2022-11-30 20:49:54
 
 --
 -- PostgreSQL database dump complete
