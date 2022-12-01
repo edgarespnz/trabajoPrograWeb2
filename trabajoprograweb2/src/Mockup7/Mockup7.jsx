@@ -4,6 +4,7 @@ import "../stylesheets/Mockup7-stylesheet.css"
 import { Figure } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { RUTA_BACKEND } from "../conf";
+import { json } from "react-router";
 
 function Mockup7() {
 
@@ -43,12 +44,13 @@ function Mockup7() {
         httpObtenerProducto(idProductoBuscado);
     }, [item])
 
-    useEffect(()=>{
-        localStorage.setItem("cart" , JSON.stringify(cart))
-    },[cart])
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart))
+    }, [cart])
 
     const onClickAddToCart=()=>{
-        setCart(item.producto)
+        setCart(cart.concat(item.producto))
+        localStorage.setItem("cart", JSON.stringify(cart))
         setAddState(true)
     }
 

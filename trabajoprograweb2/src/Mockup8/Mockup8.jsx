@@ -6,26 +6,27 @@ import "../stylesheets/Mockup8-stylesheet.css"
 import { useState } from "react";
 import { useEffect } from "react";
 import { RUTA_BACKEND } from "../conf";
+import { useNavigate } from "react-router";
 
 function Mockup8() {
 
-    const [listaOrdenes, setListaOrdenes] = useState([]);
-    const orden = 'f2feddf8-e9f8-4759-9a88-94d4a28a82aa';
-
-    const httpObtenerOrden = async () => {
-        const resp = await fetch(`${RUTA_BACKEND}/cart?orden=${orden}`)
-        const data = await resp.json()
-        setListaOrdenes(data)
-    }
+    const navigate = useNavigate();
+    const carrito = JSON.parse(localStorage.getItem("cart"))
+    const [listaCarrito , setListaCarrito] = useState([])
 
     const deleteItem = (item_id) => {
-        setListaOrdenes(listaOrdenes.filter(listaOrdenes => listaOrdenes.producto.Producto_ID !== item_id))
+        console.log(listaCarrito)
+        setListaCarrito(listaCarrito.filter(item => item.Producto_ID !== item_id))
     }
 
     useEffect(() => {
-        httpObtenerOrden()
+        setListaCarrito(carrito)
     }, [])
 
+
+    const onCheckoutClick=()=>{
+        localStorage.setItem("cart" , JSON.stringify(listaCarrito))
+    }
 
     return (
         <Container className="m7-main-container" >
@@ -34,16 +35,16 @@ function Mockup8() {
                     <h3 className="m7-shopping-title">Shopping Cart Items</h3>
                 </Col>
                 <Col>
-                    <Button className="shoppingButton"> <AiOutlineShoppingCart color="white" size="md" className="icon-m7" /> Checkout</Button>
+                    <Button className="shoppingButton" onClick={onCheckoutClick}> <AiOutlineShoppingCart color="white" size="md" className="icon-m7" /> Checkout</Button>
                 </Col>
             </Row>
             <Row>
-                {listaOrdenes.map((item)=>{
-                    return <Row className="shopping-cart-results" key={item.producto.Producto_ID}>
-                    <Col><img className="shopping-cart-items-image" src={item.producto.Url} alt="25x25" /></Col>
-                    <Col><h3 className="shopping-cart-text"> {item.producto.Nombre} </h3></Col>
-                    <Col><h3 className="shopping-cart-text">${item.producto.Precio}</h3></Col>
-                    <Col><BsTrash onClick={()=> deleteItem(item.producto.Producto_ID)} className="trash-icon-m7" color="black" size="50"/></Col>
+                {listaCarrito.map((item)=>{
+                    return <Row className="shopping-cart-results" key={item.Producto_ID}>
+                    <Col><img className="shopping-cart-items-image" src={item.Url} alt="25x25" /></Col>
+                    <Col><h3 className="shopping-cart-text"> {item.Nombre} </h3></Col>
+                    <Col><h3 className="shopping-cart-text">${item.Precio}</h3></Col>
+                    <Col><BsTrash onClick={()=> deleteItem(item.Producto_ID)} className="trash-icon-m7" color="black" size="50"/></Col>
                 </Row>
                 })}
 

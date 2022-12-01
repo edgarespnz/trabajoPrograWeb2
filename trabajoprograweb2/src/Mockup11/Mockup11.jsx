@@ -8,8 +8,6 @@ import "../stylesheets/Mockup11-stylesheet.css"
 function Mockup11() {
 
     let tipoPC = localStorage.getItem("tipo_pc")
-    const [pcArmada , setPcArmada] = useState([])
-    const [item , setItem] = useState([])
     const [productos, setProductos] = useState([])
 
 
