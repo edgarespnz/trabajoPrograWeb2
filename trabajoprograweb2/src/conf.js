@@ -1,4 +1,4 @@
-const RUTA_BACKEND = "http://localhost:8888"
+const RUTA_BACKEND = "https://backend-production-2c99.up.railway.app"
 
 export {
     RUTA_BACKEND
