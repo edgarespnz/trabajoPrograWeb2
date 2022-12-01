@@ -1,0 +1,25 @@
+.m23-h1{
+    color: white;
+    margin-top: 5%;
+    margin-bottom: 3%;
+}
+.m23-row{
+    align-content: center;
+    background-color: white;
+    margin-top: 2%;
+    height: 75px;
+    border-radius: 10px;    
+}
+
+.m23-container{
+    margin-left: 100px;
+}
+
+.m23-col1{
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.m23-col2{
+    align-content: center;
+}
