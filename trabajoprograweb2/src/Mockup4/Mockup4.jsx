@@ -2,21 +2,19 @@ import React from "react";
 import { Button, Option, Col, Container, Form, Row } from "react-bootstrap";
 import "../stylesheets/Mockup4-stylesheet.css"
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 function Mockup4() {
-    const [selectedButton, setSelectedButton] = useState("0")
+    const navigate = useNavigate();
 
-    const selectButton = () => {
-
-    }
 
     return (
 
         <Container className="m4-container" fluid>
             <Row className="m4-row1">
                 <Col sm={4} className="m4-col1">
-                    <Button className="m4-button1" variant="light" id="1"> Order History</Button>
-                    <Button className="m4-button1" variant="light" id="2">Profile Info</Button>
+                    <Button className="m4-button1" variant="light" id="1" onClick={()=>{navigate("/mockup-14")}}> Order History</Button>
+                    <Button className="m4-button1" variant="light" id="2" >Profile Info</Button>
                     <Button className="m4-button1" variant="light" id="3">Log Out </Button>
                 </Col>
                 <Col xs={true} className="m4-row2">

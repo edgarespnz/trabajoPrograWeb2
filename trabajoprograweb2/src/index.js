@@ -15,6 +15,8 @@ import Mockup8 from './Mockup8/Mockup8';
 import Mockup10 from './Mockup10/Mockup10';
 import Mockup11 from './Mockup11/Mockup11';
 import Mockup12 from './Mockup12/Mockup12';
+import Mockup13 from './Mockup13/Mockup13';
+import Mockup14 from './Mockup14/Mockup14';
 import Mockup19 from './Mockup19/Mockup19';
 import Mockup20 from './Mockup20/Mockup20';
 import Mockup23 from './Mockup23/Mockup23';
@@ -38,6 +40,8 @@ root.render(
       <Route path='/mockup-10' element={<Mockup10/>}/>
       <Route path='/mockup-11' element={<Mockup11/>}/>
       <Route path='/mockup-12' element={<Mockup12/>}/>
+      <Route path='/mockup-13' element={<Mockup13/>}/>
+      <Route path='/mockup-14' element={<Mockup14/>}/>
       <Route path='/mockup-19' element={<Mockup19/>}/>
       <Route path='/mockup-20' element={<Mockup20/>}/>
       <Route path='/mockup-23' element={<Mockup23/>}/>

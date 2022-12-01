@@ -9,6 +9,8 @@ function Mockup11() {
 
     let tipoPC = localStorage.getItem("tipo_pc")
     const [productos, setProductos] = useState([])
+    const [precioTotal, setPrecioTotal] = useState([])
+    const [buildFee , setBuildFee] = useState(99)
 
 
     const httpObtenerProductos = async () => {
@@ -22,8 +24,20 @@ function Mockup11() {
     
     useEffect(()=>{
         httpObtenerProductos()
-    },[])
+    },[tipoPC])
 
+    const setTotalPrice = (productos)=>{
+        let precioTotal = 0;
+        productos.map((item)=>{
+            precioTotal = precioTotal + parseInt(item.producto.Precio)
+        })
+        setPrecioTotal(precioTotal)
+        console.log(precioTotal)
+    }
+
+    useEffect(() => {
+        setTotalPrice(productos);
+    }, [productos])
 
     return (
         <Container>
@@ -45,10 +59,10 @@ function Mockup11() {
                         <img src="https://falabella.scene7.com/is/image/FalabellaPE/18221422_1?wid=800&hei=800&qlt=70" alt="250x250" />
                         <div className="priceContainer">
                             <h3>Components Price</h3>
-                            <h4>$1999</h4>
+                            <h4>${precioTotal}</h4>
 
                             <h3>Build Fee</h3>
-                            <h4></h4>
+                            <h4>${buildFee}</h4>
                         </div>
 
                     </Col>

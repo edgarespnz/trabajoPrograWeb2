@@ -16,32 +16,40 @@ function Mockup20() {
         const resp = await fetch(`${RUTA_BACKEND}/resenas`)
         const data = await resp.json()
         setListaResenas(data)
+        console.log(listaResenas)
     }
 
     useEffect(() => {
         httpObtenerResena()
     }, [])
 
-    /*return (
-        
-       /*<Container className="m20-container">
+    return (
+
+        <Container className="m20-container">
             <h1 className="m20-encabezado">User Reviews</h1>
             <div className="m20-div1">
                 <Row className="=m20-row1">
-                <Col xs lg="1"id="m20-col1">Global rate</Col>
-                <Col xs lg="5" id="m20-col-stars"><AiFillStar/><AiFillStar/><AiFillStar/><FaStarHalfAlt/><AiOutlineStar/></Col>
+                    <Col xs lg="1" id="m20-col1">Global rate</Col>
+                    <Col xs lg="5" id="m20-col-stars"><AiFillStar /><AiFillStar /><AiFillStar /><FaStarHalfAlt /><AiOutlineStar /></Col>
                 </Row>
             </div>
             <hr size="2px" color="gray" width="98%"></hr>
-            
             <Row>
-                {listaResenas.map(item)=>{
-                    
-                }}
-           
+                {listaResenas.map((resena) => {
+                    return (<>
+                        <h2 style={{ color: "black" }}> {resena.usuario.Nombre}</h2>
+                        <h3 style={{color: "grey" , fontSize: "medium" , marginLeft: "5%" , marginTop: "5%"}}> {resena.Comentario}</h3>
+                        <hr size="2px" color="gray" width="98%"></hr>
+                    </>
+
+
+                    );
+
+                })}
+
             </Row>
         </Container>
-    );*/
+    );
 }
 
 export default Mockup20;

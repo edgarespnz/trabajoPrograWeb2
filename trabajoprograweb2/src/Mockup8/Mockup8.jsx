@@ -26,6 +26,7 @@ function Mockup8() {
 
     const onCheckoutClick=()=>{
         localStorage.setItem("cart" , JSON.stringify(listaCarrito))
+        navigate("/mockup-13")
     }
 
     return (
@@ -42,8 +43,8 @@ function Mockup8() {
                 {listaCarrito.map((item)=>{
                     return <Row className="shopping-cart-results" key={item.Producto_ID}>
                     <Col><img className="shopping-cart-items-image" src={item.Url} alt="25x25" /></Col>
-                    <Col><h3 className="shopping-cart-text"> {item.Nombre} </h3></Col>
-                    <Col><h3 className="shopping-cart-text">${item.Precio}</h3></Col>
+                    <Col><h3 className="shopping-cart-text" style={{color:"black"}}> {item.Nombre} </h3></Col>
+                    <Col><h3 className="shopping-cart-text" style={{color:"black"}}>${item.Precio}</h3></Col>
                     <Col><BsTrash onClick={()=> deleteItem(item.Producto_ID)} className="trash-icon-m7" color="black" size="50"/></Col>
                 </Row>
                 })}
