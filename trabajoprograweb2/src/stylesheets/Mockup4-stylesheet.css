@@ -1,0 +1,63 @@
+.m4-container{
+    margin-top: 5%;
+}
+
+.m4-button1{
+    margin-bottom: 3%;
+    text-align: left;
+}
+
+.m4-col1{
+    display:flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.m4-row2{
+    padding-top: 1%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    width: 70%;
+    max-width: fit-content;
+    height: auto;
+    border-radius: 5px;
+    display:flex;
+    align-items: flex-start;
+    background-color: aliceblue;
+    
+}
+
+.m4-col2>h3{
+    font-size: large;
+    font-weight: bold;
+}
+
+.m4-pf-info{
+    font-weight: light;
+    font-size: small;
+    color: gray;
+    margin-bottom: 0;
+}
+
+
+.m4-col3{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.m4-form-buttons{
+    margin-top: 5%;
+    display:flex;
+    align-items: flex-end;
+    justify-content: baseline;
+}
+.m4-cancel-button{
+    cursor: pointer ;
+    margin-left: 2%;
+    font-size: small;
+}
+
+.m4-update-button{
+    background-color: rgba(255, 0, 255, 0.733);
+    border: none;
+}
