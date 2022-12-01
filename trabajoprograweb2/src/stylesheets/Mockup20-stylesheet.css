@@ -1,0 +1,23 @@
+.m20-container{
+    margin: 0%;
+    position: absolute;
+    max-width: 100%;
+    background-color: white;
+    padding-left: 100px;
+}
+
+.m20-encabezado{
+    color: black;
+    width: 100%;
+    font-size: 45px;
+    padding-top: 15px;
+    padding-bottom: 30px;
+    font-weight: 600;
+}
+
+.m20-div1{
+    font-weight: 700;
+    font-size: 25px;
+    
+}
+

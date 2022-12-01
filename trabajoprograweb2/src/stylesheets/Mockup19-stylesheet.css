@@ -1,0 +1,53 @@
+.m19-div1{
+    
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.m19-encabezado{
+    font-size: 30px;
+    padding-top: 5%;
+    color: white;
+    padding-bottom: 2%;
+}
+
+.m19-form{
+    background-color: white;
+    color: rgb(128, 128, 128);
+    padding: 3%;
+    padding-bottom: 1%;
+    border-radius: 5px;
+    margin-left: 120px;
+    margin-right: 30px;
+    font-weight: 600;
+}
+
+.m19-div-forms{
+    display: flex;
+    margin-bottom: 10px;
+    flex-direction: column;
+}
+
+.m19-label{
+    margin-bottom: 10px;
+}
+
+.m19-textarea{
+    color: black;
+    margin-left: -3px;
+}
+
+.m19-text{
+    color: black;
+    margin-left: -3px;
+}
+
+.m19-submit{
+    color: white;
+    background-color: rgba(189, 43, 226, 0.829);
+    border: none;
+    width: 120px;
+    margin-top: 1%;
+    border-radius: 5px;
+    height: 40px;
+}
